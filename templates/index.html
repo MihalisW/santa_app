@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santa App</title>
+    <style>
+        /* Add any additional styling here */
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+        #wellBehavedCheckbox, #presentSearchInput, #santaButton {
+            margin: 10px;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function toggleSanta() {
+            var santaButton = document.getElementById('santaButton');
+            santaButton.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+    <h1>Santa App</h1>
+
+    <!-- Image of Santa Claus -->
+    <img src="santa-claus-pop-art.png" alt="Santa Claus">
+
+    <!-- Well Behaved Checkbox -->
+    <label for="wellBehavedCheckbox">
+        Have I been well behaved this year?
+        <input type="text" id="wellBehavedCheckbox">
+    </label>
+
+    <br>
+
+    <!-- Present Search Input -->
+    <label for="presentSearchInput">
+        Search for presents:
+        <input type="text" id="presentSearchInput" placeholder="Type here...">
+    </label>
+
+    <br>
+
+    <!-- Santa Button -->
+    <button id="santaButton" onclick="toggleSanta()">Is Santa there?</button>
+
+</body>
+</html>
