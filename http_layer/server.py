@@ -1,8 +1,16 @@
-from flask import Flask, jsonify, request, Response
+import os 
+
+from flask import Flask, render_template, request, Response
 from services.present_service import *
 
+template_dir = os.path.abspath('../santa_app/templates')
+
 def instantiate_app():
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder=template_dir)
+    
+    @app.route('/')
+    def home_page_route():
+        return render_template('index.html')
     
     @app.route('/health', methods = ['GET'])
     def health_route() -> Response:
