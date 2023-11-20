@@ -25,4 +25,6 @@ class PresentRequests(BaseModel):
     present = ForeignKeyField(Present, backref='id')
     request_timestamp = TimestampField()
     
+db.connect()
 
+db.create_tables([Present, User, PresentRequests])
