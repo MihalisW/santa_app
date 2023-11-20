@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  kdm-postgres:
+    image: postgres:15.4
+    hostname: postgres
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=devonlypass
+      - POSTGRES_USER=access_request_user
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: pg_isready
+      interval: 10s
+      timeout: 5s
+      retries: 3
