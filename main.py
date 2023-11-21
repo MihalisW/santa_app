@@ -1,4 +1,8 @@
 from http_layer.server import instantiate_app
+from database.queries import *
+
+#Set up database 
+create_all_tables()
 
 # set up for local running
 if __name__ == "__main__":
