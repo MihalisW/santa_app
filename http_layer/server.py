@@ -29,6 +29,7 @@ def instantiate_app():
     def health_route() -> Response:
         response_data = {"app_working": False}
         try:
+            #TODO Use this method in service not here
             result = queries.check_health()
             print(result)
             response_data["app_working"] = result
