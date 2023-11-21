@@ -1,16 +1,16 @@
 version: "3.9"
 
 services:
-  kdm-postgres:
+  santa-app-postgres:
     image: postgres:15.4
     hostname: postgres
-    container_name: postgres
+    container_name: santa_app_db
     restart: unless-stopped
     environment:
       - POSTGRES_PASSWORD=devonlypass
-      - POSTGRES_USER=access_request_user
+      - POSTGRES_USER=santa
     ports:
-      - "5432:5432"
+      - "5433:5433"
     healthcheck:
       test: pg_isready
       interval: 10s
