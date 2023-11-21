@@ -11,6 +11,7 @@ services:
       - POSTGRES_USER=santa
     ports:
       - "5433:5433"
+    command: -p 5433  
     healthcheck:
       test: pg_isready
       interval: 10s
