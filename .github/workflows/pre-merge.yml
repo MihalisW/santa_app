@@ -1,0 +1,26 @@
+name: Pre-merge
+run-name: ${{ github.actor }} is testing changes in PR ${{ github.event.pull_request.number }}
+
+permissions:
+  contents: "write"
+  id-token: "write"
+
+on:
+  pull_request:
+    branches:
+      - "master"
+    paths:
+      - "**/*"
+
+jobs:
+  pr:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout branch
+          uses: actions/checkout@v3
+
+        - name: Set up Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: "3.11"
