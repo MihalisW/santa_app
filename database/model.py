@@ -1,10 +1,12 @@
 from peewee import *
 import os  
 
-db = PostgresqlDatabase(user=os.getenv("DATABASE_NAME"), 
-user=os.getenv("DATABASE_USER")
-password=os.getenv("DATABASE_PASSWORD"), 
-host=os.getenv("DATABASE_HOST"))
+db = PostgresqlDatabase(os.getenv("DATABASE_NAME"), 
+                        user=os.getenv("DATABASE_USER"),
+                        password=os.getenv("DATABASE_PASSWORD"), 
+                        host=os.getenv("DATABASE_HOST"),
+                        port=os.getenv("DATABASE_PORT"))
+
 
 class BaseModel(Model):
     class Meta:
@@ -19,12 +21,11 @@ class User(BaseModel):
     username = CharField(unique=True)
     email = CharField(unique=True) 
 
-class PresentRequests(BaseModel):
+class PresentRequest(BaseModel):
     id = UUIDField(unique=True)
     user = ForeignKeyField(User, backref='id')
     present = ForeignKeyField(Present, backref='id')
     request_timestamp = TimestampField()
-    
-db.connect()
 
-db.create_tables([Present, User, PresentRequests])
+    class Meta:
+        db_table = 'present_request'
