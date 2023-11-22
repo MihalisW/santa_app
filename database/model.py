@@ -20,6 +20,13 @@ class User(BaseModel):
     username = CharField(unique=True)
     email = CharField(unique=True) 
 
+class Behaviour(BaseModel):
+    id = UUIDField(unique=True)
+    user = ForeignKeyField(User, backref='id')
+    year = IntegerField()
+    is_good = BooleanField()
+    observed_at = TimestampField()
+
 class PresentRequest(BaseModel):
     id = UUIDField(unique=True)
     user = ForeignKeyField(User, backref='id')
@@ -38,4 +45,4 @@ def open_close_connection(func):
 
 @open_close_connection
 def create_all_tables() -> None:
-    db.create_tables([Present, User, PresentRequest])
+    db.create_tables([Present, User, Behaviour, PresentRequest])
