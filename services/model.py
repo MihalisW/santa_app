@@ -14,14 +14,13 @@ class User(BaseModel):
     email: EmailStr 
 
 class Behaviour(BaseModel):
-    id: UUID1
-    user: UUID1
+    user: type[User.email]
     year: int
     is_good: bool
     observed_at: PastDatetime
 
 class PresentRequest(BaseModel):
     id: UUID1
-    user: UUID1
-    present: UUID1
+    user: User.email
+    present: type[Present]
     request_timestamp: PastDatetime
