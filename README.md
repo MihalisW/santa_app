@@ -25,3 +25,5 @@ A RESTful API for folk to:
 - moved template folder to the http_layer package as Flask will find this auto-magically, along with the static folder
 - moved routes defined in `server.py` to `routes.py`
 - added `santa.py` as the entrypoint to the application, bearing in mind we can use `.flaskenv` to build various flavours 🍦
+
+- haven't integrated the latest changes to `server.py`
