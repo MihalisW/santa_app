@@ -6,14 +6,15 @@ from flask import (Flask,
                    make_response, 
                    Response)
 import json
-from services.present_service import *
+from services.elf_service import *
 from database.queries import *
 
 template_dir = os.path.abspath('../santa_app/templates')
 
 def instantiate_app():
+
     app = Flask(__name__, template_folder=template_dir)
-    queries = Queries()
+    elfs = ElfService()
 
     def create_response(data, code) -> Response:
         response = make_response('Response')
@@ -30,7 +31,7 @@ def instantiate_app():
         response_data = {"app_working": False}
         try:
             #TODO Use this method in service not here
-            result = queries.check_health()
+            result = elfs.check_health()
             print(result)
             response_data["app_working"] = result
             data = json.dumps(response_data)

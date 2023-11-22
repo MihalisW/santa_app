@@ -7,7 +7,6 @@ db = PostgresqlDatabase(os.getenv("DATABASE_NAME"),
                         host=os.getenv("DATABASE_HOST"),
                         port=os.getenv("DATABASE_PORT"))
 
-
 class BaseModel(Model):
     class Meta:
         database = db
@@ -29,3 +28,14 @@ class PresentRequest(BaseModel):
 
     class Meta:
         db_table = 'present_request'
+
+def open_close_connection(func):
+    def wrapper(*args, **kwargs):
+        db.connect()
+        func(*args, **kwargs)
+        db.close()
+    return wrapper
+
+@open_close_connection
+def create_all_tables() -> None:
+    db.create_tables([Present, User, PresentRequest])
