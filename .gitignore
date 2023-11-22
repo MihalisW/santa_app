@@ -37,3 +37,12 @@ coverage.xml
 # Django stuff:
 *.log
 *.pot
+
+# env
+.env
+
+# Virtualenv
+.venv/
+
+# Mac stuff
+.DS_Store
