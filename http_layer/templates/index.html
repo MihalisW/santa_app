@@ -32,8 +32,8 @@
     <h1>Santa App</h1>
 
     <!-- Image of Santa Claus -->
-    <img src="santa-claus-pop-art.png" alt="Santa Claus">
-
+    <img src="{{url_for('static', filename='images/santa-clause-pop-art.png')}}" alt="Santa Claus">
+    <pre>env vars? {{config.SECRET_KEY}}</pre>
     <!-- Well Behaved Checkbox -->
     <label for="wellBehavedCheckbox">
         Have I been well behaved this year?
