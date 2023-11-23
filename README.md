@@ -8,7 +8,7 @@ A RESTful API for folk to:
 
 --------------------------------------
 
-###To run locally
+### To run locally
 
 1. In one terminal spin up postgres like so:
 
